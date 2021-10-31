@@ -1,7 +1,6 @@
-import { Navigation } from 'react-native-navigation';
 import React from 'react';
-import {BasicForm} from './BasicForm.js';
 import type {Node} from 'react';
+import {BasicForm} from './BasicForm.js';
 import {
   SafeAreaView,
   ScrollView,
@@ -10,7 +9,6 @@ import {
   Text,
   useColorScheme,
   View,
-  Button,
 } from 'react-native';
 
 import {
@@ -21,22 +19,6 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
   
-Navigation.registerComponent('BasicForm', () => BasicForm);
-Navigation.events().registerAppLaunchedListener(async () => {
-  Navigation.setRoot({
-    root: {
-      stack: {
-        children: [
-          {
-            component: {
-              name: 'BasicForm'
-            }
-          }
-        ]
-      }
-    }
-  });
-});
 const Section = ({children, title}): Node => {
   const isDarkMode = useColorScheme() === 'dark';
   return (
@@ -82,10 +64,7 @@ export const Welcome: () => Node = () => {
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
-            <Button  
-          title="Go to Basic Form"  
-          onPress={() => this.props.navigation.navigate('BasicForm')}  
-        />
+          <BasicForm/>
           <Section title="Step One">
             Edit <Text style={styles.highlight}>App.js</Text> to change this
             screen and then come back to see your edits.Devrath
