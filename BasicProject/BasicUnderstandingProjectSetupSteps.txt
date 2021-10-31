@@ -81,5 +81,5 @@ Ctrl+ m => choose Debug Js Remotely => This will open a tab in Google Chrome wit
 
 Using React-native-debugger
 
-Installing Navigation package
+Check list of active devices => adb devices
 

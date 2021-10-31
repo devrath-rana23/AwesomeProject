@@ -1,29 +1,33 @@
-import React, { Component } from "react";
-import { StyleSheet, Text, View, TextInput } from "react-native";
+import React, {useState} from 'react';
+import {Text, StyleSheet, View, TextInput, Button} from 'react-native';
+import { Picker } from '@react-native-picker/picker';
 
-export class BasicForm extends Component {
-    render() {
-      return(
-        <View style = {styles.container}>
-          <Text style= {styles.paragraph}>
-            Let's build a form
-          </Text>
-        </View>
-      );
-    }
-  }
-  const styles = StyleSheet.create({
-    conatiner: {
-      justifyContent: 'center',
-      marginTop: 50,
-      padding: 20,
-      backgroundColor: '#ffffff',
-    },
-    paragraph: {
-      margin: 24,
-      fontSize: 18,
-      fontWeight: 'bold',
-      textAlign: 'center',
-      color: '#34495e',
-    },
+export const BasicForm = () => {
+  const [currency, setCurrency] = useState('US Dollar');
+  return (
+    <View >
+      <Text > Demo Form </Text>
+      <View>
+        <TextInput 
+          placeholder="Email" />
+        <TextInput
+          secureTextEntry={true}
+          placeholder="Password"
+        />
+        <Picker
+          selectedValue={currency}
+          onValueChange={currentCurrency => setCurrency(currentCurrency)}>
+          <Picker.Item label="USD" value="US Dollars" />
+          <Picker.Item label="EUR" value="Euro" />
+          <Picker.Item label="NGN" value="Naira" />
+        </Picker>
+        <Text>
+          Selected: {currency}
+        </Text>
+      </View>
+    </View>
+  );
+};
+const styles = StyleSheet.create({
+  //Check project repo for styles
 });
