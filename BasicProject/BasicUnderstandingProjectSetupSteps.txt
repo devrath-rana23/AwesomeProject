@@ -71,7 +71,7 @@ Now that you have successfully run the app, let's modify it.
 Open App.js in your text editor of choice and edit some lines.
 Press the R key twice or select Reload from the Developer Menu (Ctrl + M) to see your changes!
 
-(Check your changes in your android virtual device) which opens after running => npx react-native run-android
+(Check your changes in your android virtual device) which opens after running => npx react-native run-android (using genymotion)
 
 
 Debugging react-native
@@ -84,3 +84,5 @@ Using React-native-debugger
 Check list of active devices => adb devices
 
 Create Demo form=> https://blog.logrocket.com/build-better-forms-with-react-native-ui-components/
+
+npm install --save react-native

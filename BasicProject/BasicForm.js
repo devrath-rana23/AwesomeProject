@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {Text, StyleSheet, View, TextInput, Button} from 'react-native';
+import React, { useState } from 'react';
+import { Text, StyleSheet, View, TextInput, Button } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 
 export const BasicForm = () => {
@@ -8,7 +8,7 @@ export const BasicForm = () => {
     <View >
       <Text > Demo Form </Text>
       <View>
-        <TextInput 
+        <TextInput
           placeholder="Email" />
         <TextInput
           secureTextEntry={true}

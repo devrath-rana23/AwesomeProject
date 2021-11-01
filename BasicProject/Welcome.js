@@ -1,6 +1,6 @@
 import React from 'react';
-import type {Node} from 'react';
-import {BasicForm} from './BasicForm.js';
+import type { Node } from 'react';
+
 import {
   SafeAreaView,
   ScrollView,
@@ -18,8 +18,8 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-  
-const Section = ({children, title}): Node => {
+
+const Section = ({ children, title }): Node => {
   const isDarkMode = useColorScheme() === 'dark';
   return (
     <View style={styles.sectionContainer}>
@@ -41,7 +41,7 @@ const Section = ({children, title}): Node => {
         ]}>
         {children}
       </Text>
-        
+
     </View>
   );
 };
@@ -64,7 +64,6 @@ export const Welcome: () => Node = () => {
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
-          <BasicForm/>
           <Section title="Step One">
             Edit <Text style={styles.highlight}>App.js</Text> to change this
             screen and then come back to see your edits.Devrath
