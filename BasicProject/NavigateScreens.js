@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Welcome } from './Welcome.js';
-import { Button, View, Text, Image } from 'react-native';
+import { Button, View, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Register } from './Register.js';
@@ -17,13 +16,14 @@ function HomeScreen({ navigation }) {
             />
             <Button
                 title="Register"
+                color="#1b3c42"
                 onPress={() => navigation.navigate('Register')}
             />
             <Button
                 title="Login"
+                color="#1b3c42"
                 onPress={() => navigation.navigate('Login')}
             />
-            <Welcome />
         </View>
     );
 }
@@ -41,10 +41,6 @@ function LoginScreen({ navigation }) {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Login />
-            <Button
-                title="Go to HomeScreen"
-                onPress={() => navigation.navigate('Home')}
-            />
         </View>
     );
 }
@@ -101,7 +97,7 @@ const styles = {
     headerStyle: {
         backgroundColor: '#ffffff',
     },
-    headerTintColor: '#0099ff',
+    headerTintColor: '#1b3c42',
     headerTitleAlign: 'center',
     headerTitleStyle: {
         fontWeight: 'bold',

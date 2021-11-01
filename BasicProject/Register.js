@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { Text, StyleSheet, View, TextInput, Image, Button } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import { Text, StyleSheet, View, TextInput, Image, Button, Alert } from 'react-native';
 import { LOGO } from './src/image/index.js';
 
+const Separator = () => (
+  <View style={styles.separator} />
+);
+
 export const Register = () => {
-  const [currency, setCurrency] = useState('US Dollar');
   return (
     <View >
       <Image
@@ -13,19 +15,32 @@ export const Register = () => {
       />
       <View style={styles.container}>
         <TextInput
+          style={{ backgroundColor: '#ffffff', }}
           placeholder="Full name" />
+          <Separator />
         <TextInput
+          style={ styles.inputBox }
           placeholder="Email" />
+          <Separator />
         <TextInput
+          style={ styles.inputBox }
           secureTextEntry={true}
           placeholder="Password"
         />
+        <Separator />
         <TextInput
+          style={ styles.inputBox }
           secureTextEntry={true}
           placeholder="Confirm password"
         />
-        <Button title="Create Account" />
-        <Text>Already got an account?<Button title="Login" /></Text>
+        <Separator />
+        <Button 
+        title="Create Account" 
+        color="#1b3c42"
+        onPress={() => Alert.alert('Create Account button pressed')}
+        />
+        {/* <Text>Already got an account?</Text>
+        <Text style={{color:'#0099ff',backgroundColor:'red', paddingLeft:200,marginBottom:200, }}>Login</Text> */}
       </View>
     </View>
   );
@@ -41,5 +56,11 @@ const styles = StyleSheet.create({
     height: 100,
     marginLeft: 112,
     marginTop: 112,
+  },
+  inputBox: {
+    backgroundColor: '#ffffff', 
+  },
+  separator:{
+    marginVertical: 8,
   },
 });

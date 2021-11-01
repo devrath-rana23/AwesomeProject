@@ -11,8 +11,8 @@ import { NavigateScreens } from './NavigateScreens.js';
 
 class Main extends Component {
   render() {
-    return(
-        <NavigateScreens/>
+    return (
+      <NavigateScreens />
     );
   }
 }

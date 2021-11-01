@@ -1,33 +1,56 @@
 import React, { useState } from 'react';
-import { Text, StyleSheet, View, TextInput, Button } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import { Text, StyleSheet, View, TextInput, Image, Button, Alert } from 'react-native';
+import { LOGO } from './src/image/index.js';
+
+const Separator = () => (
+  <View style={styles.separator} />
+);
 
 export const Login = () => {
-  const [currency, setCurrency] = useState('US Dollar');
   return (
     <View >
-      <Text > Login Form </Text>
-      <View>
+      <Image
+        style={styles.logo}
+        source={LOGO}
+      />
+      <View style={styles.container}>
         <TextInput
+          style={ styles.inputBox }
           placeholder="Email" />
+          <Separator />
         <TextInput
+          style={ styles.inputBox }
           secureTextEntry={true}
           placeholder="Password"
         />
-        <Picker
-          selectedValue={currency}
-          onValueChange={currentCurrency => setCurrency(currentCurrency)}>
-          <Picker.Item label="USD" value="US Dollars" />
-          <Picker.Item label="EUR" value="Euro" />
-          <Picker.Item label="NGN" value="Naira" />
-        </Picker>
-        <Text>
-          Selected: {currency}
-        </Text>
+        <Separator />
+        <Button 
+        title="Login" 
+        color="#1b3c42"
+        onPress={() => Alert.alert('Login button pressed')}
+        />
+        {/* <Text>Already got an account?</Text>
+        <Text style={{color:'#0099ff',backgroundColor:'red', paddingLeft:200,marginBottom:200, }}>Login</Text> */}
       </View>
     </View>
   );
 };
 const styles = StyleSheet.create({
-  //Check project repo for styles
+  container: {
+    height: 700,
+    width: 350,
+    paddingTop: 50,
+  },
+  logo: {
+    width: 150,
+    height: 100,
+    marginLeft: 112,
+    marginTop: 112,
+  },
+  inputBox: {
+    backgroundColor: '#ffffff', 
+  },
+  separator:{
+    marginVertical: 8,
+  },
 });
