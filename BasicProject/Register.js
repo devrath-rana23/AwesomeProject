@@ -15,7 +15,7 @@ export const Register = () => {
       />
       <View style={styles.container}>
         <TextInput
-          style={{ backgroundColor: '#ffffff', }}
+          style={ styles.inputBox }
           placeholder="Full name" />
           <Separator />
         <TextInput
