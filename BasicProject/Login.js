@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { Text, StyleSheet, View, TextInput, Button } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 
-export const BasicForm = () => {
+export const Login = () => {
   const [currency, setCurrency] = useState('US Dollar');
   return (
     <View >
-      <Text > Demo Form </Text>
+      <Text > Login Form </Text>
       <View>
         <TextInput
           placeholder="Email" />
