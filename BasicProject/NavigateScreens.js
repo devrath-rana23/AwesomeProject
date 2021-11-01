@@ -27,12 +27,11 @@ function HomeScreen({ navigation }) {
 function RegisterScreen({ navigation }) {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>Register Screen</Text>
+            <Register />
             <Button
                 title="Go to HomeScreen"
                 onPress={() => navigation.navigate('Home')}
             />
-            <Register />
         </View>
     );
 }
@@ -40,12 +39,11 @@ function RegisterScreen({ navigation }) {
 function LoginScreen({ navigation }) {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>Login Screen</Text>
+            <Login />
             <Button
                 title="Go to HomeScreen"
                 onPress={() => navigation.navigate('Home')}
             />
-            <Login />
         </View>
     );
 }
