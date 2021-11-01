@@ -1,33 +1,45 @@
 import React, { useState } from 'react';
-import { Text, StyleSheet, View, TextInput, Button } from 'react-native';
+import { Text, StyleSheet, View, TextInput, Image, Button } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
+import { LOGO } from './src/image/index.js';
 
 export const Register = () => {
   const [currency, setCurrency] = useState('US Dollar');
   return (
     <View >
-      <Text > Register Form </Text>
-      <View>
+      <Image
+        style={styles.logo}
+        source={LOGO}
+      />
+      <View style={styles.container}>
+        <TextInput
+          placeholder="Full name" />
         <TextInput
           placeholder="Email" />
         <TextInput
           secureTextEntry={true}
           placeholder="Password"
         />
-        <Picker
-          selectedValue={currency}
-          onValueChange={currentCurrency => setCurrency(currentCurrency)}>
-          <Picker.Item label="USD" value="US Dollars" />
-          <Picker.Item label="EUR" value="Euro" />
-          <Picker.Item label="NGN" value="Naira" />
-        </Picker>
-        <Text>
-          Selected: {currency}
-        </Text>
+        <TextInput
+          secureTextEntry={true}
+          placeholder="Confirm password"
+        />
+        <Button title="Create Account" />
+        <Text>Already got an account?<Button title="Login" /></Text>
       </View>
     </View>
   );
 };
 const styles = StyleSheet.create({
-  //Check project repo for styles
+  container: {
+    height: 700,
+    width: 350,
+    paddingTop: 50,
+  },
+  logo: {
+    width: 150,
+    height: 100,
+    marginLeft: 112,
+    marginTop: 112,
+  },
 });
