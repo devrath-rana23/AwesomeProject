@@ -4,25 +4,11 @@ import { LOGO } from './src/image/index.js';
 import { Button } from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
 import { renderNode } from 'react-native-elements/dist/helpers';
-import {PasswordTextBox} from './PasswordTextBox.js'
 
 const Separator = () => (
   <View style={styles.separator} />
 );
-const [hidePass, setHidePass] = useState(true);
 export class Register extends Component {
-
-  constructor(props) {
-    super(props);
-    this.toggleSwitch = this.toggleSwitch.bind(this);
-    this.state = {
-      showPassword: true,
-    }
-  }
-
-  toggleSwitch() {
-    this.setState({ showPassword: !this.state.showPassword });
-  }
   render() {
     return (
       <SafeAreaView style={styles.container}>
@@ -52,13 +38,8 @@ export class Register extends Component {
             <Text style={styles.label}>Password</Text>
             <TextInput
               style={styles.inputBox}
-              secureTextEntry={this.state.showPassword}
-              onChangeText={(password) => this.setState({ password })}
+              secureTextEntry={true}
               placeholder="Password"
-            />
-            <Switch
-              onValueChange={this.toggleSwitch}
-              value={!this.state.showPassword}
             />
             <Separator />
             <TouchableOpacity style={{ backgroundColor: '#1b3c42', marginLeft: 20, marginRight: 20, height: 36, borderRadius: 50 }}
