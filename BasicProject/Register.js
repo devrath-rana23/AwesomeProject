@@ -20,10 +20,10 @@ export class Register extends Component {
             source={LOGO}
           />
           <Text style={{ fontSize: 40, fontWeight: 'bold', fontFamily: "serif", color: '#000000', marginLeft: 17 }}>Sign-up</Text>
-          <View  style={{backgroundColor:'#e1e6e2', height:100, borderRadius:100, width:100,marginLeft:160 }}>
-          <Ionicons
+          <View style={{ backgroundColor: '#e1e6e2', height: 100, borderRadius: 100, width: 100, marginLeft: 160 }}>
+            <Ionicons
               name="camera"
-              style={{height:100,marginTop:41, marginLeft:40,}}
+              style={{ height: 100, marginTop: 41, marginLeft: 40, }}
               size={20}
             />
           </View>
@@ -45,17 +45,17 @@ export class Register extends Component {
             />
             <Separator />
             <Text style={styles.label}>Password</Text>
-            <View style={{flexDirection:'row',}}>
-            <TextInput
-              style={styles.inputBox}
-              secureTextEntry={true}
-              placeholder="Password"
-            />
-            <Ionicons
-              name="eye"
-              style={{marginLeft:280,marginBottom:0,marginTop:18,marginRight:0,}}
-              size={20}
-            />
+            <View style={{ flexDirection: 'row', }}>
+              <TextInput
+                style={styles.inputBox}
+                secureTextEntry={true}
+                placeholder="Password"
+              />
+              <Ionicons
+                name="eye"
+                style={{ marginLeft: 280, marginBottom: 0, marginTop: 18, marginRight: 0, }}
+                size={20}
+              />
             </View>
             <Separator />
             <TouchableOpacity style={{ backgroundColor: '#1b3c42', marginLeft: 20, marginRight: 20, height: 40, borderRadius: 55 }}
