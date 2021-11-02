@@ -1,33 +1,60 @@
 import React, { Component } from 'react';
-import { Button, View, Image } from 'react-native';
+import { Button, View, Image, StyleSheet, SafeAreaView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Register } from './Register.js';
 import { Login } from './Login.js';
 import { LOGO } from './src/image/index.js';
 
+const Stack = createNativeStackNavigator();
+const Separator = () => (
+    <View style={styles.separator} />
+);
+const ButtonSeparator = () => (
+    <View style={styles.buttonSeparator} />
+);
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+    },
+    logo: {
+        width: 412,
+        height: 210,
+    },
+    separator: {
+        marginVertical: 100,
+    },
+    buttonSeparator: {
+        marginVertical: 8,
+    }
+});
 
 function HomeScreen({ navigation }) {
     return (
-        <View>
-            <Image
-                style={{ width: 150, height: 100, marginLeft: 112, }}
-                source={LOGO}
-            />
-            <Button
-                title="Register"
-                color="#1b3c42"
-                onPress={() => navigation.navigate('Register')}
-            />
-            <Button
-                title="Login"
-                color="#1b3c42"
-                onPress={() => navigation.navigate('Login')}
-            />
-        </View>
+        <SafeAreaView style={styles.container}>
+            <View>
+                <Image
+                    style={styles.logo}
+                    source={LOGO}
+                />
+                <Separator />
+                <View style={{ alignItems: 'center' }}>
+                    <Button
+                        title="Login"
+                        color="#1b3c42"
+                        onPress={() => navigation.navigate('Login')}
+                    />
+                    <ButtonSeparator />
+                    <Button
+                        title="Register"
+                        color="#1b3c42"
+                        onPress={() => navigation.navigate('Register')}
+                    />
+                </View>
+            </View>
+        </SafeAreaView>
     );
 }
-
 
 function RegisterScreen({ navigation }) {
     return (
@@ -45,23 +72,21 @@ function LoginScreen({ navigation }) {
     );
 }
 
-const Stack = createNativeStackNavigator();
-
 export class NavigateScreens extends Component {
 
     render() {
         return (
             <NavigationContainer>
-                <Stack.Navigator initialRouteName="Home">
+                <Stack.Navigator
+                    screenOptions={{
+                        headerShown: false
+                    }}
+                    initialRouteName="Home">
                     <Stack.Screen
                         name="Home"
                         component={HomeScreen}
                         options={{
                             title: 'Home',
-                            headerStyle: styles.headerStyle,
-                            headerTintColor: styles.headerTintColor,
-                            headerTitleStyle: styles.headerTitleStyle,
-                            headerTitleAlign: styles.headerTitleAlign,
                         }}
                     />
                     <Stack.Screen
@@ -69,10 +94,6 @@ export class NavigateScreens extends Component {
                         component={RegisterScreen}
                         options={{
                             title: 'Registration',
-                            headerStyle: styles.headerStyle,
-                            headerTintColor: styles.headerTintColor,
-                            headerTitleStyle: styles.headerTitleStyle,
-                            headerTitleAlign: styles.headerTitleAlign,
                         }}
                     />
                     <Stack.Screen
@@ -80,10 +101,6 @@ export class NavigateScreens extends Component {
                         component={LoginScreen}
                         options={{
                             title: 'Login',
-                            headerStyle: styles.headerStyle,
-                            headerTintColor: styles.headerTintColor,
-                            headerTitleStyle: styles.headerTitleStyle,
-                            headerTitleAlign: styles.headerTitleAlign,
                         }}
                     />
                 </Stack.Navigator>
@@ -92,14 +109,3 @@ export class NavigateScreens extends Component {
     }
 
 }
-
-const styles = {
-    headerStyle: {
-        backgroundColor: '#ffffff',
-    },
-    headerTintColor: '#1b3c42',
-    headerTitleAlign: 'center',
-    headerTitleStyle: {
-        fontWeight: 'bold',
-    },
-};
