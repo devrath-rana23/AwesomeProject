@@ -86,3 +86,7 @@ Check list of active devices => adb devices
 Create Demo form=> https://blog.logrocket.com/build-better-forms-with-react-native-ui-components/
 
 npm install --save react-native
+
+if fonrawesome icon not showing
+npx react-native link
+npx react-native run-android
