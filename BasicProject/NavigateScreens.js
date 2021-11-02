@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Register } from './Register.js';
 import { Login } from './Login.js';
+import { Forgetpassword } from './Forgetpassword';
 import { LOGO } from './src/image/index.js';
 
 const Stack = createNativeStackNavigator();
@@ -50,6 +51,12 @@ function HomeScreen({ navigation }) {
                         color="#1b3c42"
                         onPress={() => navigation.navigate('Register')}
                     />
+                    <ButtonSeparator />
+                    <Button
+                        title="Forgetpassword"
+                        color="#1b3c42"
+                        onPress={() => navigation.navigate('Forgetpassword')}
+                    />
                 </View>
             </View>
         </SafeAreaView>
@@ -60,6 +67,14 @@ function RegisterScreen({ navigation }) {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Register />
+        </View>
+    );
+}
+
+function ForgetpasswordScreen({ navigation }) {
+    return (
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <Forgetpassword />
         </View>
     );
 }
@@ -85,23 +100,18 @@ export class NavigateScreens extends Component {
                     <Stack.Screen
                         name="Home"
                         component={HomeScreen}
-                        options={{
-                            title: 'Home',
-                        }}
                     />
                     <Stack.Screen
                         name="Register"
                         component={RegisterScreen}
-                        options={{
-                            title: 'Registration',
-                        }}
                     />
                     <Stack.Screen
                         name="Login"
                         component={LoginScreen}
-                        options={{
-                            title: 'Login',
-                        }}
+                    />
+                    <Stack.Screen
+                        name="Forgetpassword"
+                        component={ForgetpasswordScreen}
                     />
                 </Stack.Navigator>
             </NavigationContainer>
