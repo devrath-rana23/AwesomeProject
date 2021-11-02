@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, StyleSheet, View, TextInput, Image, Alert, SafeAreaView } from 'react-native';
+import { Text, StyleSheet, View, TextInput, Image, Alert, SafeAreaView, TouchableHighlight, TouchableOpacity } from 'react-native';
 import { LOGO } from './src/image/index.js';
 import { Button } from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
@@ -43,17 +43,15 @@ export const Register = () => {
             placeholder="Password"
           />
           <Separator />
-          <View style={{marginLeft:20, marginRight:20,}}>
-          <Button
-          ViewComponent={LinearGradient} // Don't forget this!
-          linearGradientProps={{
-            colors: ['red', 'pink'],
-            start: { x: 0, y: 0.5 },
-            end: { x: 1, y: 0.5 },
-          }}
-            title="Create Account"
-          />
-          </View>
+          <TouchableOpacity style={{ backgroundColor: '#1b3c42', marginLeft: 20, marginRight: 20, height: 36, borderRadius: 50 }}
+            onPress={() => {
+              Alert.alert('Create Account Button pressed');
+            }}
+          >
+            <Text style={{ color: "#ffffff", textAlign: 'center', fontWeight: "bold", fontSize: 17, paddingTop: 6 }}>
+              Create Account
+            </Text>
+          </TouchableOpacity >
           {/* <Text>Already got an account?</Text>
         <Text style={{color:'#0099ff',backgroundColor:'red', paddingLeft:200,marginBottom:200, }}>Login</Text> */}
         </View>
