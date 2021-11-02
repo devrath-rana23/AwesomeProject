@@ -1,5 +1,5 @@
 import React, { Component, useState } from 'react';
-import { Text, StyleSheet, View, TextInput, Image, Alert, SafeAreaView, TouchableHighlight, TouchableOpacity, Switch, Icon } from 'react-native';
+import { Text, StyleSheet, View, TextInput, Image, Alert, SafeAreaView, TouchableHighlight, TouchableOpacity } from 'react-native';
 import { LOGO } from './src/image/index.js';
 import { Button } from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
