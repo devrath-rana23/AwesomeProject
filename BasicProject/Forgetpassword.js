@@ -30,7 +30,7 @@ export const Forgetpassword = () => {
             }}
           >
             <Text style={{ color: "#ffffff", textAlign: 'center', fontWeight: "bold", fontSize: 17, paddingTop: 6 }}>
-            Forgetpassword
+              Forgetpassword
             </Text>
           </TouchableOpacity >
           {/* <Text>Already got an account?</Text>

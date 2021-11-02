@@ -4,7 +4,6 @@ import { LOGO } from './src/image/index.js';
 import { Button } from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
 import { renderNode } from 'react-native-elements/dist/helpers';
-import {PasswordTextBox} from './PasswordTextBox.js'
 
 const Separator = () => (
   <View style={styles.separator} />
@@ -60,6 +59,7 @@ export class Register extends Component {
               onValueChange={this.toggleSwitch}
               value={!this.state.showPassword}
             />
+           
             <Separator />
             <TouchableOpacity style={{ backgroundColor: '#1b3c42', marginLeft: 20, marginRight: 20, height: 36, borderRadius: 50 }}
               onPress={() => {
