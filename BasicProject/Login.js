@@ -46,11 +46,6 @@ export class Login extends Component {
   }
 }
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#ffffff',
-
-  },
   logo: {
     width: 412,
     height: 210,

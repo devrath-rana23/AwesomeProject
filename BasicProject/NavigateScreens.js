@@ -95,7 +95,8 @@ function ForgetpasswordScreen({ navigation }) {
 function LoginScreen({ navigation }) {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <SafeAreaView style={styles.container}>
+            <SafeAreaView style={{flex: 1,
+    backgroundColor: '#ffffff',}}>
                 <Login />
             </SafeAreaView>
             <TouchableOpacity style={{ backgroundColor: '#1b3c42', marginLeft: 20, marginRight: 20, height: 40, borderRadius: 55 }}
