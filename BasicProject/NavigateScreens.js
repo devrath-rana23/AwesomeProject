@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Register } from './Register.js';
 import { Login } from './Login.js';
 import { Forgetpassword } from './Forgetpassword';
-import { LOGO } from './src/image/index.js';
+import { LOGO, GMAIL_LOGO } from './src/image/index.js';
 
 const Stack = createNativeStackNavigator();
 const Separator = () => (
@@ -100,7 +100,13 @@ function LoginScreen({ navigation }) {
             }}>
                 <Login />
             </SafeAreaView>
-            <TouchableOpacity style={{ backgroundColor: '#1b3c42', marginLeft: 20, marginRight: 20, height: 40, borderRadius: 55, width: 370, }}
+            <TouchableOpacity 
+            style={{marginLeft:261,}}            
+            onPress={() => navigation.navigate('Forgetpassword')}
+            >
+                <Text>Forget password?</Text>
+            </TouchableOpacity >
+            <TouchableOpacity style={{ backgroundColor: '#1b3c42', marginLeft: 20, marginRight: 20, height: 40, borderRadius: 55, width: 370,marginVertical:20 }}
                 onPress={() => {
                     Alert.alert('Login Button pressed');
                 }}
@@ -109,6 +115,22 @@ function LoginScreen({ navigation }) {
                     Login
                 </Text>
             </TouchableOpacity >
+            <TouchableOpacity 
+            onPress={() => navigation.navigate('Register')}
+            >
+                <Text>Don't have an account? Sign-up</Text>
+            </TouchableOpacity >
+            <View style={{marginVertical:20}}></View>
+            <Text>Or signin with</Text>
+            <View style={{marginVertical:20}}></View>
+            <View style={{flexDirection:'row' }}>
+                <Image
+                source={GMAIL_LOGO}
+                ></Image>
+                <Image
+                source={FACEBOOK_LOGO}
+                ></Image>
+            </View>
         </View>
     );
 }
