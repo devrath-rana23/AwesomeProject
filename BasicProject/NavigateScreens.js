@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, View, Image, StyleSheet, SafeAreaView } from 'react-native';
+import { Button, Text, TouchableOpacity, View, Image, StyleSheet, SafeAreaView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Register } from './Register.js';
@@ -67,6 +67,12 @@ function RegisterScreen({ navigation }) {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Register />
+            <View style={{ marginVertical: 20, }}></View>
+            <TouchableOpacity
+                onPress={() => navigation.navigate('Login')}
+            >
+                <Text >Already have an account? Login</Text>
+            </TouchableOpacity >
         </View>
     );
 }
@@ -75,6 +81,13 @@ function ForgetpasswordScreen({ navigation }) {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Forgetpassword />
+            <View style={{ marginVertical: 20, }}></View>
+            <TouchableOpacity
+                style={{ height:370 }}
+                onPress={() => navigation.navigate('Login')}
+            >
+                <Text >Back to login</Text>
+            </TouchableOpacity >
         </View>
     );
 }
