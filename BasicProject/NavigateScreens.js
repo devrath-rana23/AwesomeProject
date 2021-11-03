@@ -126,9 +126,11 @@ function LoginScreen({ navigation }) {
             <View style={{flexDirection:'row' }}>
                 <Image
                 source={GMAIL_LOGO}
+                style={{height:50, width:50}}
                 ></Image>
                 <Image
                 source={FACEBOOK_LOGO}
+                style={{height:50, width:50}}
                 ></Image>
             </View>
         </View>
