@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Register } from './Register.js';
 import { Login } from './Login.js';
 import { Forgetpassword } from './Forgetpassword';
-import { LOGO, GMAIL_LOGO } from './src/image/index.js';
+import { LOGO, GMAIL_LOGO, FACEBOOK_LOGO } from './src/image/index.js';
 
 const Stack = createNativeStackNavigator();
 const Separator = () => (
