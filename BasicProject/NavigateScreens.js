@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, ScrollView, Text, TouchableOpacity, View, Image, StyleSheet, SafeAreaView } from 'react-native';
+import { Button, ScrollView, Text, TouchableOpacity, View, Image, StyleSheet, SafeAreaView, Alert } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Register } from './Register.js';
@@ -94,14 +94,13 @@ function ForgetpasswordScreen({ navigation }) {
 
 function LoginScreen({ navigation }) {
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <View style={{ alignItems: 'center', justifyContent: 'center', paddingTop: 0, }}>
             <SafeAreaView style={{
-                flex: 1,
                 backgroundColor: '#ffffff',
             }}>
                 <Login />
             </SafeAreaView>
-            <TouchableOpacity style={{ backgroundColor: '#1b3c42', marginLeft: 20, marginRight: 20, height: 40, borderRadius: 55 }}
+            <TouchableOpacity style={{ backgroundColor: '#1b3c42', marginLeft: 20, marginRight: 20, height: 40, borderRadius: 55, width: 370, }}
                 onPress={() => {
                     Alert.alert('Login Button pressed');
                 }}
