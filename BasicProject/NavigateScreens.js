@@ -65,15 +65,15 @@ function HomeScreen({ navigation }) {
 
 function RegisterScreen({ navigation }) {
     return (
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <Register />
-                <View style={{ marginVertical: 20, }}></View>
-                <TouchableOpacity
-                    onPress={() => navigation.navigate('Login')}
-                >
-                    <Text >Already have an account? Login</Text>
-                </TouchableOpacity >
-            </View>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <Register />
+            <View style={{ marginVertical: 20, }}></View>
+            <TouchableOpacity
+                onPress={() => navigation.navigate('Login')}
+            >
+                <Text >Already have an account? Login</Text>
+            </TouchableOpacity >
+        </View>
     );
 }
 
@@ -95,7 +95,18 @@ function ForgetpasswordScreen({ navigation }) {
 function LoginScreen({ navigation }) {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Login />
+            <SafeAreaView style={styles.container}>
+                <Login />
+            </SafeAreaView>
+            <TouchableOpacity style={{ backgroundColor: '#1b3c42', marginLeft: 20, marginRight: 20, height: 40, borderRadius: 55 }}
+                onPress={() => {
+                    Alert.alert('Login Button pressed');
+                }}
+            >
+                <Text style={{ color: "#ffffff", textAlign: 'center', fontWeight: "bold", fontSize: 17, paddingTop: 6 }}>
+                    Login
+                </Text>
+            </TouchableOpacity >
         </View>
     );
 }

@@ -35,8 +35,6 @@ export class Forgetpassword extends Component {
                 Forgetpassword
               </Text>
             </TouchableOpacity >
-            {/* <Text>Already got an account?</Text>
-        <Text style={{color:'#0099ff',backgroundColor:'red', paddingLeft:200,marginBottom:200, }}>Login</Text> */}
           </View>
         </View>
       </SafeAreaView>
