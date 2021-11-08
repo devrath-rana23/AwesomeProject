@@ -71,7 +71,7 @@ export class Register extends Component {
                 placeholder="Password"
               />
               <Ionicons
-                name="eye"
+                name={this.state.passwordIsVisible ? 'eye' : 'eye-off'}
                 onPress={this.hideShowPasswordFuntionality}
                 style={styles.eye_icon}
                 size={20}
@@ -87,7 +87,7 @@ export class Register extends Component {
                 placeholder="Confirm password"
               />
               <Ionicons
-                name="eye"
+                name={this.state.confirmPasswordIsVisible ? 'eye' : 'eye-off'}
                 onPress={this.hideShowConfirmPasswordFuntionality}
                 style={styles.eye_icon}
                 size={20}
