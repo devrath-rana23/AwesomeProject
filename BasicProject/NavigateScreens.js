@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, ScrollView, Text, TouchableOpacity, View, Image, StyleSheet, SafeAreaView, Alert, Pressable } from 'react-native';
+import { ScrollView, Text, TouchableOpacity, View, Image, StyleSheet, SafeAreaView, Alert, Pressable } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Register } from './Register.js';
@@ -18,10 +18,24 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
-    text: {
+    button: {
+        margin: 10,
+        padding: 12,
+        borderRadius: 50,
+    },
+    button_text: {
         color: '#fff',
         fontSize: 20,
         textAlign: 'center',
+    },
+    redirect_button: {
+        marginBottom: 20,
+        flex: 1,
+        alignItems: 'center',
+    },
+    redirect_button_text: {
+        fontSize: 16,
+        color: '#000',
     },
     image_container: {
         flex: 1,
@@ -32,11 +46,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'stretch',
         margin: 100,
-    },
-    button: {
-        margin: 10,
-        padding: 12,
-        borderRadius: 50,
     },
     logo: {
         width: 412,
@@ -72,7 +81,7 @@ function HomeScreen({ navigation }) {
                         styles.button
                     ]}
                 >
-                    <Text style={styles.text}>Login</Text>
+                    <Text style={styles.button_text}>Login</Text>
                 </Pressable>
                 <Pressable
                     onPress={() => navigation.navigate('Register')}
@@ -85,7 +94,7 @@ function HomeScreen({ navigation }) {
                         styles.button
                     ]}
                 >
-                    <Text style={styles.text}>Register</Text>
+                    <Text style={styles.button_text}>Register</Text>
                 </Pressable>
             </View>
         </SafeAreaView>
@@ -94,17 +103,18 @@ function HomeScreen({ navigation }) {
 
 function RegisterScreen({ navigation }) {
     return (
-        <ScrollView>
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <SafeAreaView style={styles.container}>
+            <ScrollView >
                 <Register />
-                <View style={{ marginVertical: 20, }}></View>
-                <TouchableOpacity
+                <Pressable
                     onPress={() => navigation.navigate('Login')}
+                    style={styles.redirect_button}
                 >
-                    <Text >Already have an account? Login</Text>
-                </TouchableOpacity >
-            </View>
-        </ScrollView>
+                    <Text style={styles.redirect_button_text}>Already have an account? Login</Text>
+                </Pressable>
+            </ScrollView>
+        </SafeAreaView>
+
     );
 }
 
