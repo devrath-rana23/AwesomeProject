@@ -1,11 +1,7 @@
-import React, { Component, useState } from 'react';
-import { Text, StyleSheet, View, TextInput, Image, Alert, SafeAreaView, TouchableHighlight, TouchableOpacity } from 'react-native';
+import React, { Component } from 'react';
+import { Text, StyleSheet, View, TextInput, Image } from 'react-native';
 import { LOGO } from './src/image/index.js';
-import { Button } from 'react-native-elements';
-import LinearGradient from 'react-native-linear-gradient';
-import { renderNode } from 'react-native-elements/dist/helpers';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
 
 const Separator = () => (
   <View style={styles.separator} />

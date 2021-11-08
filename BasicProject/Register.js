@@ -2,7 +2,26 @@ import React, { Component } from 'react';
 import { Text, StyleSheet, View, TextInput, Image, Alert, Pressable } from 'react-native';
 import { LOGO } from './src/image/index.js';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+
 export class Register extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { passwordIsVisible: true, confirmPasswordIsVisible: true };
+  }
+
+  hideShowPasswordFuntionality = () => {
+    this.setState((state, props) => {
+      return { passwordIsVisible: !state.passwordIsVisible };
+    });
+  }
+
+  hideShowConfirmPasswordFuntionality = () => {
+    this.setState((state, props) => {
+      return { confirmPasswordIsVisible: !state.confirmPasswordIsVisible };
+    });
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -48,11 +67,12 @@ export class Register extends Component {
             <View style={styles.input_box_with_icons}>
               <TextInput
                 style={styles.inputBox}
-                secureTextEntry={true}
+                secureTextEntry={this.state.passwordIsVisible}
                 placeholder="Password"
               />
               <Ionicons
                 name="eye"
+                onPress={this.hideShowPasswordFuntionality}
                 style={styles.eye_icon}
                 size={20}
               />
@@ -63,11 +83,12 @@ export class Register extends Component {
             <View style={styles.input_box_with_icons}>
               <TextInput
                 style={styles.inputBox}
-                secureTextEntry={true}
+                secureTextEntry={this.state.confirmPasswordIsVisible}
                 placeholder="Confirm password"
               />
               <Ionicons
                 name="eye"
+                onPress={this.hideShowConfirmPasswordFuntionality}
                 style={styles.eye_icon}
                 size={20}
               />
@@ -141,20 +162,20 @@ const styles = StyleSheet.create({
   inputBox: {
     paddingBottom: 1,
   },
-  input_box_with_icons:{
-    flexDirection:'row',
-    justifyContent:'space-between',
+  input_box_with_icons: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
-  eye_icon:{
-    paddingTop:10,
-    },
-    button:{
-      padding: 12,
-      borderRadius: 50,
-    },
-    button_text:{
-      color: '#fff',
-      fontSize: 20,
-      textAlign: 'center',
-    },
+  eye_icon: {
+    paddingTop: 10,
+  },
+  button: {
+    padding: 12,
+    borderRadius: 50,
+  },
+  button_text: {
+    color: '#fff',
+    fontSize: 20,
+    textAlign: 'center',
+  },
 });

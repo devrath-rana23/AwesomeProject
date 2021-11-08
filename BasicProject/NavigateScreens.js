@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
 
 });
 
-function HomeScreen({ navigation }) {
+const HomeScreen = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.image_container}>
@@ -89,7 +89,7 @@ function HomeScreen({ navigation }) {
     );
 }
 
-function RegisterScreen({ navigation }) {
+const RegisterScreen = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView >
@@ -106,7 +106,7 @@ function RegisterScreen({ navigation }) {
     );
 }
 
-function ForgetpasswordScreen({ navigation }) {
+const ForgetpasswordScreen = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView >
