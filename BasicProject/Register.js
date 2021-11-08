@@ -82,7 +82,7 @@ export class Register extends Component {
       );
     } else {
       const phoneno_re = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-      if (this.state.contact_number.value.match(phoneno_re)) {
+      if (phoneno_re.test(String(this.state.contact_number))) {
         valid_contact_number = true;
       } else {
         ToastAndroid.showWithGravityAndOffset('Contact number field is invalid.',
@@ -100,7 +100,7 @@ export class Register extends Component {
       );
     } else {
       const password_regex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
-      if (this.state.password.value.match(password_regex)) {
+      if (password_regex.test(String(this.state.password))) {
         valid_password = true;
       } else {
         ToastAndroid.showWithGravityAndOffset('Password field is invalid.',
