@@ -8,12 +8,6 @@ import { Forgetpassword } from './Forgetpassword';
 import { LOGO, GMAIL_LOGO, FACEBOOK_LOGO } from './src/image/index.js';
 
 const Stack = createNativeStackNavigator();
-const Separator = () => (
-    <View style={styles.separator} />
-);
-const ButtonSeparator = () => (
-    <View style={styles.buttonSeparator} />
-);
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -50,12 +44,6 @@ const styles = StyleSheet.create({
     logo: {
         width: 412,
         height: 210,
-    },
-    separator: {
-        marginVertical: 100,
-    },
-    buttonSeparator: {
-        marginVertical: 8,
     },
 
 });
