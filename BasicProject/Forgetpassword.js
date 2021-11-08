@@ -1,7 +1,39 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View, TextInput, Image, Alert, Pressable } from 'react-native';
+import { Text, StyleSheet, View, TextInput, Image, ToastAndroid, Pressable } from 'react-native';
 import { LOGO } from './src/image/index.js';
 export class Forgetpassword extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+      submitted: false,
+    };
+  }
+
+  onFormSubmit = () => {
+    if (!this.state.email) {
+      ToastAndroid.showWithGravityAndOffset('Email field is required.',
+        ToastAndroid.LONG,
+        ToastAndroid.TOP,
+        100, 2500
+      );
+    } else {
+      const email_re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      if (email_re.test(String(this.state.email).toLowerCase())) {
+        this.setState((state, props) => {
+          return { submitted: !state.submitted };
+        });
+      } else {
+        ToastAndroid.showWithGravityAndOffset('Email field is invalid.',
+          ToastAndroid.LONG,
+          ToastAndroid.TOP,
+          100, 2500
+        );
+      }
+    }
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -18,11 +50,17 @@ export class Forgetpassword extends Component {
           <View style={styles.form_fields_container}>
             <Text style={styles.label}>Email</Text>
             <TextInput
+              keyboardType='email-address'
+              onChangeText={(value) => {
+                this.setState((state, props) => {
+                  return { email: value };
+                });
+              }}
               style={styles.inputBox}
               placeholder="Your email id" />
           </View>
           <Pressable
-            onPress={() => Alert.alert('Forgetpassword Button pressed')}
+            onPress={this.onFormSubmit}
             style={({ pressed }) => [
               {
                 backgroundColor: pressed
@@ -32,8 +70,11 @@ export class Forgetpassword extends Component {
               styles.button
             ]}
           >
-            <Text style={styles.button_text}>Forgetpassword</Text>
+            <Text style={styles.button_text}>Submit</Text>
           </Pressable>
+          {
+            this.state.submitted ? <Text>Forget password successfully '{this.state.email}'</Text> : null
+          }
         </View>
       </View>
     );

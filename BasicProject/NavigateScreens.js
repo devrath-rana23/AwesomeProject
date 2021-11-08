@@ -109,13 +109,15 @@ const RegisterScreen = ({ navigation }) => {
 const ForgetpasswordScreen = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
-            <Forgetpassword />
-            <Pressable
-                onPress={() => navigation.navigate('Login')}
-                style={styles.redirect_button}
-            >
-                <Text style={styles.redirect_button_text}>Back to login</Text>
-            </Pressable>
+            <ScrollView >
+                <Forgetpassword />
+                <Pressable
+                    onPress={() => navigation.navigate('Login')}
+                    style={styles.redirect_button}
+                >
+                    <Text style={styles.redirect_button_text}>Back to login</Text>
+                </Pressable>
+            </ScrollView>
         </SafeAreaView>
     );
 }
