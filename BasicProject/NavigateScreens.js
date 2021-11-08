@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, ScrollView, Text, TouchableOpacity, View, Image, StyleSheet, SafeAreaView, Alert } from 'react-native';
+import { Button, ScrollView, Text, TouchableOpacity, View, Image, StyleSheet, SafeAreaView, Alert, Pressable } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Register } from './Register.js';
@@ -18,6 +18,26 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
+    text: {
+        color: '#fff',
+        fontSize: 20,
+        textAlign: 'center',
+    },
+    image_container: {
+        flex: 1,
+        backgroundColor: 'yellow',
+    },
+    buttons_container: {
+        flex: 3,
+        justifyContent: 'center',
+        alignItems: 'stretch',
+        margin: 100,
+    },
+    button: {
+        margin: 10,
+        padding: 12,
+        borderRadius: 50,
+    },
     logo: {
         width: 412,
         height: 210,
@@ -27,31 +47,46 @@ const styles = StyleSheet.create({
     },
     buttonSeparator: {
         marginVertical: 8,
-    }
+    },
+
 });
 
 function HomeScreen({ navigation }) {
     return (
         <SafeAreaView style={styles.container}>
-            <View>
+            <View style={styles.image_container}>
                 <Image
                     style={styles.logo}
                     source={LOGO}
                 />
-                <Separator />
-                <View style={{ alignItems: 'center' }}>
-                    <Button
-                        title="Login"
-                        color="#1b3c42"
-                        onPress={() => navigation.navigate('Login')}
-                    />
-                    <ButtonSeparator />
-                    <Button
-                        title="Register"
-                        color="#1b3c42"
-                        onPress={() => navigation.navigate('Register')}
-                    />
-                </View>
+            </View>
+            <View style={styles.buttons_container}>
+                <Pressable
+                    onPress={() => navigation.navigate('Login')}
+                    style={({ pressed }) => [
+                        {
+                            backgroundColor: pressed
+                                ? '#ddd'
+                                : '#1b3c42'
+                        },
+                        styles.button
+                    ]}
+                >
+                    <Text style={styles.text}>Login</Text>
+                </Pressable>
+                <Pressable
+                    onPress={() => navigation.navigate('Register')}
+                    style={({ pressed }) => [
+                        {
+                            backgroundColor: pressed
+                                ? '#ddd'
+                                : '#1b3c42'
+                        },
+                        styles.button
+                    ]}
+                >
+                    <Text style={styles.text}>Register</Text>
+                </Pressable>
             </View>
         </SafeAreaView>
     );
@@ -59,21 +94,23 @@ function HomeScreen({ navigation }) {
 
 function RegisterScreen({ navigation }) {
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Register />
-            <View style={{ marginVertical: 20, }}></View>
-            <TouchableOpacity
-                onPress={() => navigation.navigate('Login')}
-            >
-                <Text >Already have an account? Login</Text>
-            </TouchableOpacity >
-        </View>
+        <ScrollView>
+            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                <Register />
+                <View style={{ marginVertical: 20, }}></View>
+                <TouchableOpacity
+                    onPress={() => navigation.navigate('Login')}
+                >
+                    <Text >Already have an account? Login</Text>
+                </TouchableOpacity >
+            </View>
+        </ScrollView>
     );
 }
 
 function ForgetpasswordScreen({ navigation }) {
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#ffffff', }}>
             <Forgetpassword />
             <View style={{ marginVertical: 20, }}></View>
             <TouchableOpacity
@@ -88,10 +125,8 @@ function ForgetpasswordScreen({ navigation }) {
 
 function LoginScreen({ navigation }) {
     return (
-        <View style={{ alignItems: 'center', justifyContent: 'center', paddingTop: 0, }}>
-            <SafeAreaView style={{
-                backgroundColor: '#ffffff',
-            }}>
+        <View style={{ alignItems: 'center', justifyContent: 'center', paddingTop: 0, backgroundColor: '#ffffff', }}>
+            <SafeAreaView>
                 <Login />
             </SafeAreaView>
             <TouchableOpacity

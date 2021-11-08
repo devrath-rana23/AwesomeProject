@@ -58,6 +58,20 @@ export class Register extends Component {
               />
             </View>
             <Separator />
+            <Text style={styles.label}>Confirm password</Text>
+            <View style={{ flexDirection: 'row', }}>
+              <TextInput
+                style={styles.inputBox}
+                secureTextEntry={true}
+                placeholder="Confirm password"
+              />
+              <Ionicons
+                name="eye"
+                style={{ marginLeft: 280, marginBottom: 0, marginTop: 18, marginRight: 0, }}
+                size={20}
+              />
+            </View>
+            <Separator />
             <TouchableOpacity style={{ backgroundColor: '#1b3c42', marginLeft: 20, marginRight: 20, height: 40, borderRadius: 55 }}
               onPress={() => {
                 Alert.alert('Create Account Button pressed');
