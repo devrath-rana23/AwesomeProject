@@ -1,133 +1,164 @@
-import React, { Component } from 'react';
-import { Text, StyleSheet, View, TextInput, Image } from 'react-native';
-import { LOGO } from './src/image/index.js';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-export class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      passwordIsVisible: true,
-      confirmPasswordIsVisible: true,
-      email: '',
-      password: '',
-    };
-  }
+import React, { useState } from 'react';
+import { ScrollView, Text, View, Image, StyleSheet, SafeAreaView, Pressable } from 'react-native';
+import { GMAIL_LOGO, FACEBOOK_LOGO } from './src/image/index.js';
 
-  hideShowPasswordFuntionality = () => {
-    this.setState((state, props) => {
-      return { passwordIsVisible: !state.passwordIsVisible };
-    });
-  }
+const [passwordIsVisible, setPasswordIsVisible] = useState(true);
+const [confirmPasswordIsVisible, setConfirmPasswordIsVisible] = useState(true);
+const [email, setEmail] = '';
+const [password, setPassword] = '';
+const [submitted, setSubmitted] = useState(true);
 
-  hideShowConfirmPasswordFuntionality = () => {
-    this.setState((state, props) => {
-      return { confirmPasswordIsVisible: !state.confirmPasswordIsVisible };
-    });
-  }
+const hideShowPasswordFuntionality = () => {
+  setPasswordIsVisible(!passwordIsVisible);
+}
 
-  formSubmit = () => {
-    let valid_email = false;
-    let valid_password = false;
+const hideShowConfirmPasswordFuntionality = () => {
+  setConfirmPasswordIsVisible(!confirmPasswordIsVisible);
+}
 
-    if (!this.state.email) {
-      ToastAndroid.showWithGravityAndOffset('Email field is required.',
+const formSubmit = () => {
+  let valid_email = false;
+  let valid_password = false;
+
+  if (!email) {
+    ToastAndroid.showWithGravityAndOffset('Email field is required.',
+      ToastAndroid.LONG,
+      ToastAndroid.TOP,
+      100, 2500
+    );
+  } else {
+    const email_re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (email_re.test(String(email).toLowerCase())) {
+      valid_email = true;
+    } else {
+      ToastAndroid.showWithGravityAndOffset('Email field is invalid.',
         ToastAndroid.LONG,
         ToastAndroid.TOP,
         100, 2500
       );
-    } else {
-      const email_re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      if (email_re.test(String(this.state.email).toLowerCase())) {
-        valid_email = true;
-      } else {
-        ToastAndroid.showWithGravityAndOffset('Email field is invalid.',
-          ToastAndroid.LONG,
-          ToastAndroid.TOP,
-          100, 2500
-        );
-      }
     }
-    if (!this.state.password) {
-      ToastAndroid.showWithGravityAndOffset('Password field is required.',
+  }
+  if (!password) {
+    ToastAndroid.showWithGravityAndOffset('Password field is required.',
+      ToastAndroid.LONG,
+      ToastAndroid.TOP,
+      100, 2500
+    );
+  } else {
+    const password_regex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+    if (password_regex.test(String(password))) {
+      valid_password = true;
+    } else {
+      ToastAndroid.showWithGravityAndOffset('Password field is invalid.',
         ToastAndroid.LONG,
         ToastAndroid.TOP,
-        100, 2500
-      );
-    } else {
-      const password_regex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
-      if (password_regex.test(String(this.state.password))) {
-        valid_password = true;
-      } else {
-        ToastAndroid.showWithGravityAndOffset('Password field is invalid.',
-          ToastAndroid.LONG,
-          ToastAndroid.TOP,
-          100, 2500);
-      }
+        100, 2500);
     }
-    if (valid_email && valid_password) {
-      this.setState((state, props) => {
-        return { submitted: !state.submitted };
-      });
-    }
-
+  }
+  if (valid_email && valid_password) {
+    setSubmitted(!submitted);
   }
 
-  render() {
-    return (
-      <View style={styles.container}>
-        <View style={styles.image_container}>
-          <Image
-            style={styles.logo}
-            source={LOGO}
-          />
-        </View>
-        <View style={styles.heading}>
-          <Text style={styles.heading_text}>Log-in</Text>
-        </View>
-        <View style={styles.form_container}>
-          <View style={styles.form_fields_container}>
-            <Text style={styles.label}>Email</Text>
-            <TextInput
-              keyboardType='email-address'
-              onChangeText={(value) => {
-                this.setState((state, props) => {
-                  return { email: value };
-                });
-              }}
-              style={styles.inputBox}
-              placeholder="Your email id" />
+}
+
+const LoginScreen = ({ navigation }) => {
+  return (
+    <SafeAreaView style={styles.container}>
+      <ScrollView >
+        <View style={styles.container}>
+          <View style={styles.image_container}>
+            <Image
+              style={styles.logo}
+              source={LOGO}
+            />
           </View>
-          <View style={styles.form_fields_container}>
-            <Text style={styles.label}>Password</Text>
-            <View style={styles.input_box_with_icons}>
+          <View style={styles.heading}>
+            <Text style={styles.heading_text}>Log-in</Text>
+          </View>
+          <View style={styles.form_container}>
+            <View style={styles.form_fields_container}>
+              <Text style={styles.label}>Email</Text>
               <TextInput
                 keyboardType='email-address'
-                onChangeText={(value) => {
-                  this.setState((state, props) => {
-                    return { password: value };
-                  });
-                }}
+                onChangeText={(value) => { setEmail(value) }}
                 style={styles.inputBox}
-                secureTextEntry={this.state.passwordIsVisible}
-                placeholder="Password"
-              />
-              <Ionicons
-                name={this.state.passwordIsVisible ? 'eye' : 'eye-off'}
-                onPress={this.hideShowPasswordFuntionality}
-                style={styles.eye_icon}
-                size={20}
-              />
+                placeholder="Your email id" />
+            </View>
+            <View style={styles.form_fields_container}>
+              <Text style={styles.label}>Password</Text>
+              <View style={styles.input_box_with_icons}>
+                <TextInput
+                  onChangeText={(value) => { setPassword(value) }}
+                  style={styles.inputBox}
+                  secureTextEntry={passwordIsVisible}
+                  placeholder="Password"
+                />
+                <Ionicons
+                  name={passwordIsVisible ? 'eye' : 'eye-off'}
+                  onPress={hideShowPasswordFuntionality}
+                  style={styles.eye_icon}
+                  size={20}
+                />
+              </View>
             </View>
           </View>
         </View>
-      </View>
-    );
-  }
+        <Pressable
+          onPress={() => navigation.navigate('Forgetpassword')}
+          style={styles.redirect_button}
+        >
+          <Text style={styles.redirect_button_text}>Forget password?</Text>
+        </Pressable>
+        <Pressable
+          onPress={formSubmit}
+          style={({ pressed }) => [
+            {
+              backgroundColor: pressed
+                ? '#ddd'
+                : '#1b3c42'
+            },
+            styles.button
+          ]}
+        >
+          <Text style={styles.button_text}>Login</Text>
+        </Pressable>
+        <Pressable
+          onPress={() => navigation.navigate('Register')}
+          style={styles.redirect_button}
+        >
+          <Text style={styles.redirect_button_text}>Don't have an account? Sign-up</Text>
+        </Pressable>
+        <View style={{ marginVertical: 20 }}></View>
+        <Text>Or signin with</Text>
+        <View style={{ marginVertical: 20 }}></View>
+        <View style={{ flexDirection: 'row' }}>
+          <Image
+            source={GMAIL_LOGO}
+            style={{ height: 50, width: 50 }}
+          ></Image>
+          <Image
+            source={FACEBOOK_LOGO}
+            style={{ height: 50, width: 50 }}
+          ></Image>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
+  },
+  redirect_button: {
+    marginBottom: 20,
+    flex: 1,
+    alignItems: 'center',
+  },
+  redirect_button_text: {
+    fontSize: 16,
+    color: '#000',
   },
   image_container: {
     flex: 1,
@@ -191,3 +222,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
+
+export default LoginScreen;
