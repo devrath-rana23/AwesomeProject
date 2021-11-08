@@ -248,7 +248,7 @@ export class Register extends Component {
             <Text style={styles.button_text}>Create Account</Text>
           </Pressable>
           {
-            this.submitted ? <Text>You are registered successfully as '{this.state.name}'</Text> : null
+            this.state.submitted ? <Text>You are registered successfully as '{this.state.name}'</Text> : null
           }
         </View>
       </View>
