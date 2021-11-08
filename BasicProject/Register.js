@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View, TextInput, Image, Alert, Pressable } from 'react-native';
+import { Text, StyleSheet, View, TextInput, Image, Pressable, ToastAndroid } from 'react-native';
 import { LOGO } from './src/image/index.js';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -7,7 +7,16 @@ export class Register extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { passwordIsVisible: true, confirmPasswordIsVisible: true };
+    this.state = {
+      passwordIsVisible: true,
+      confirmPasswordIsVisible: true,
+      name: '',
+      email: '',
+      contact_number: '',
+      password: '',
+      confirm_password: '',
+      submitted: false,
+    };
   }
 
   hideShowPasswordFuntionality = () => {
@@ -22,8 +31,26 @@ export class Register extends Component {
     });
   }
 
-  formSubmit = () => {
-
+  onFormSubmit = () => {
+    if (!this.name) {
+      ToastAndroid.showWithGravityAndOffset('Name field is required.',
+        ToastAndroid.LONG,
+        ToastAndroid.TOP,
+        100, 2500
+      );
+    } else {
+      if (this.name.length < 8) {
+        ToastAndroid.showWithGravityAndOffset('The name field minimum length should be 8.',
+          ToastAndroid.LONG,
+          ToastAndroid.TOP,
+          100, 2500
+        );
+      } else {
+        this.setState((state, props) => {
+          return { submitted: !state.submitted };
+        });
+      }
+    }
   }
 
   render() {
@@ -50,18 +77,35 @@ export class Register extends Component {
           <View style={styles.form_fields_container}>
             <Text style={styles.label}>Name</Text>
             <TextInput
+              onChangeText={(value) => {
+                this.setState((state, props) => {
+                  return { name: value };
+                });
+              }}
               style={styles.inputBox}
               placeholder="Your name" />
           </View>
           <View style={styles.form_fields_container}>
             <Text style={styles.label}>Email</Text>
             <TextInput
+              keyboardType='email-address'
+              onChangeText={(value) => {
+                this.setState((state, props) => {
+                  return { email: value };
+                });
+              }}
               style={styles.inputBox}
               placeholder="Your email id" />
           </View>
           <View style={styles.form_fields_container}>
             <Text style={styles.label}>Contact no.</Text>
             <TextInput
+              keyboardType='numeric'
+              onChangeText={(value) => {
+                this.setState((state, props) => {
+                  return { contact_number: value };
+                });
+              }}
               style={styles.inputBox}
               placeholder="Your contact number"
             />
@@ -70,6 +114,11 @@ export class Register extends Component {
             <Text style={styles.label}>Password</Text>
             <View style={styles.input_box_with_icons}>
               <TextInput
+                onChangeText={(value) => {
+                  this.setState((state, props) => {
+                    return { password: value };
+                  });
+                }}
                 style={styles.inputBox}
                 secureTextEntry={this.state.passwordIsVisible}
                 placeholder="Password"
@@ -86,6 +135,11 @@ export class Register extends Component {
             <Text style={styles.label}>Confirm password</Text>
             <View style={styles.input_box_with_icons}>
               <TextInput
+                onChangeText={(value) => {
+                  this.setState((state, props) => {
+                    return { confirm_password: value };
+                  });
+                }}
                 style={styles.inputBox}
                 secureTextEntry={this.state.confirmPasswordIsVisible}
                 placeholder="Confirm password"
@@ -99,7 +153,7 @@ export class Register extends Component {
             </View>
           </View>
           <Pressable
-            onPress={this.formSubmit}
+            onPress={this.onFormSubmit}
             style={({ pressed }) => [
               {
                 backgroundColor: pressed
@@ -111,6 +165,9 @@ export class Register extends Component {
           >
             <Text style={styles.button_text}>Create Account</Text>
           </Pressable>
+          {
+            this.submitted ? <Text>You are registered successfully as '{this.name}'</Text> : null
+          }
         </View>
       </View>
     );
