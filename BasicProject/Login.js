@@ -2,65 +2,132 @@ import React, { Component } from 'react';
 import { Text, StyleSheet, View, TextInput, Image } from 'react-native';
 import { LOGO } from './src/image/index.js';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
-const Separator = () => (
-  <View style={styles.separator} />
-);
 export class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { passwordIsVisible: true, confirmPasswordIsVisible: true };
+  }
+
+  hideShowPasswordFuntionality = () => {
+    this.setState((state, props) => {
+      return { passwordIsVisible: !state.passwordIsVisible };
+    });
+  }
+
+  hideShowConfirmPasswordFuntionality = () => {
+    this.setState((state, props) => {
+      return { confirmPasswordIsVisible: !state.confirmPasswordIsVisible };
+    });
+  }
+
+  formSubmit = () => {
+
+  }
+
   render() {
     return (
-      <View >
-        <Image
-          style={styles.logo}
-          source={LOGO}
-        />
-        <Text style={{ fontSize: 40, fontWeight: 'bold', fontFamily: "serif", color: '#000000', marginLeft: 17 }}>Log-in</Text>
-        <View>
-          <Text style={styles.label}>Email</Text>
-          <TextInput
-            style={styles.inputBox}
-            placeholder="Your email id" />
-          <Separator />
-          <Text style={styles.label}>Password</Text>
-          <View style={{ flexDirection: 'row', }}>
+      <View style={styles.container}>
+        <View style={styles.image_container}>
+          <Image
+            style={styles.logo}
+            source={LOGO}
+          />
+        </View>
+        <View style={styles.heading}>
+          <Text style={styles.heading_text}>Log-in</Text>
+        </View>
+        <View style={styles.form_container}>
+          <View style={styles.form_fields_container}>
+            <Text style={styles.label}>Email</Text>
             <TextInput
               style={styles.inputBox}
-              secureTextEntry={true}
-              placeholder="Password"
-            />
-            <Ionicons
-              name="eye"
-              style={{ marginLeft: 280, marginBottom: 0, marginTop: 18, marginRight: 0, }}
-              size={20}
-            />
+              placeholder="Your email id" />
           </View>
-          <Separator />
+          <View style={styles.form_fields_container}>
+            <Text style={styles.label}>Password</Text>
+            <View style={styles.input_box_with_icons}>
+              <TextInput
+                style={styles.inputBox}
+                secureTextEntry={this.state.passwordIsVisible}
+                placeholder="Password"
+              />
+              <Ionicons
+                name={this.state.passwordIsVisible ? 'eye' : 'eye-off'}
+                onPress={this.hideShowPasswordFuntionality}
+                style={styles.eye_icon}
+                size={20}
+              />
+            </View>
+          </View>
         </View>
       </View>
-
     );
   }
 }
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#ffffff',
+  },
+  image_container: {
+    flex: 1,
+  },
   logo: {
     width: 412,
     height: 210,
   },
-  label: {
-    fontSize: 20,
+  heading: {
+    margin: 20,
+  },
+  heading_text: {
+    fontFamily: 'serif',
+    color: '#000',
+    fontSize: 40,
     fontWeight: 'bold',
-    color: '#000000',
-    marginLeft: 17,
+  },
+  camera_container: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  camera_icon_container: {
+    backgroundColor: '#e1e6e2',
+    padding: 40,
+    borderRadius: 50,
+    marginBottom: 20,
+  },
+  form_container: {
+    flex: 1,
+    borderWidth: 20,
+    borderColor: '#fff',
+    alignItems: 'stretch',
+  },
+  form_fields_container: {
+    marginBottom: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: '#000',
+  },
+  label: {
+    fontSize: 19,
+    fontWeight: 'bold',
+    color: '#000',
   },
   inputBox: {
-    paddingLeft: 20,
+    paddingBottom: 1,
   },
-  separator: {
-    marginVertical: 8,
-    borderBottomColor: '#000000',
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    marginLeft: 20,
-    marginRight: 20,
-
+  input_box_with_icons: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  eye_icon: {
+    paddingTop: 10,
+  },
+  button: {
+    padding: 12,
+    borderRadius: 50,
+  },
+  button_text: {
+    color: '#fff',
+    fontSize: 20,
+    textAlign: 'center',
   },
 });

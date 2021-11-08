@@ -109,59 +109,54 @@ const RegisterScreen = ({ navigation }) => {
 const ForgetpasswordScreen = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
-            <ScrollView >
-                <Forgetpassword />
-                <Pressable
-                    onPress={() => navigation.navigate('Login')}
-                    style={styles.redirect_button}
-                >
-                    <Text style={styles.redirect_button_text}>Back to login</Text>
-                </Pressable>
-            </ScrollView>
+            <Forgetpassword />
+            <Pressable
+                onPress={() => navigation.navigate('Login')}
+                style={styles.redirect_button}
+            >
+                <Text style={styles.redirect_button_text}>Back to login</Text>
+            </Pressable>
         </SafeAreaView>
     );
 }
 
 function LoginScreen({ navigation }) {
     return (
-        <View style={{ alignItems: 'center', justifyContent: 'center', paddingTop: 0, backgroundColor: '#ffffff', }}>
-            <SafeAreaView>
+        <SafeAreaView style={styles.container}>
+            <ScrollView >
                 <Login />
-            </SafeAreaView>
-            <TouchableOpacity
-                style={{ marginLeft: 261, }}
-                onPress={() => navigation.navigate('Forgetpassword')}
-            >
-                <Text>Forget password?</Text>
-            </TouchableOpacity >
-            <TouchableOpacity style={{ backgroundColor: '#1b3c42', marginLeft: 20, marginRight: 20, height: 40, borderRadius: 55, width: 370, marginVertical: 20 }}
-                onPress={() => {
-                    Alert.alert('Login Button pressed');
-                }}
-            >
-                <Text style={{ color: "#ffffff", textAlign: 'center', fontWeight: "bold", fontSize: 17, paddingTop: 6 }}>
-                    Login
-                </Text>
-            </TouchableOpacity >
-            <TouchableOpacity
-                onPress={() => navigation.navigate('Register')}
-            >
-                <Text>Don't have an account? Sign-up</Text>
-            </TouchableOpacity >
-            <View style={{ marginVertical: 20 }}></View>
-            <Text>Or signin with</Text>
-            <View style={{ marginVertical: 20 }}></View>
-            <View style={{ flexDirection: 'row' }}>
-                <Image
-                    source={GMAIL_LOGO}
-                    style={{ height: 50, width: 50 }}
-                ></Image>
-                <Image
-                    source={FACEBOOK_LOGO}
-                    style={{ height: 50, width: 50 }}
-                ></Image>
-            </View>
-        </View>
+                <Pressable
+                    onPress={() => navigation.navigate('Forgetpassword')}
+                    style={styles.redirect_button}
+                >
+                    <Text style={styles.redirect_button_text}>Forget password?</Text>
+                </Pressable>
+                <Pressable
+                    style={styles.button}
+                >
+                    <Text style={styles.button_text}>Login</Text>
+                </Pressable>
+                <Pressable
+                    onPress={() => navigation.navigate('Register')}
+                    style={styles.redirect_button}
+                >
+                    <Text style={styles.redirect_button_text}>Don't have an account? Sign-up</Text>
+                </Pressable>
+                <View style={{ marginVertical: 20 }}></View>
+                <Text>Or signin with</Text>
+                <View style={{ marginVertical: 20 }}></View>
+                <View style={{ flexDirection: 'row' }}>
+                    <Image
+                        source={GMAIL_LOGO}
+                        style={{ height: 50, width: 50 }}
+                    ></Image>
+                    <Image
+                        source={FACEBOOK_LOGO}
+                        style={{ height: 50, width: 50 }}
+                    ></Image>
+                </View>
+            </ScrollView>
+        </SafeAreaView>
     );
 }
 

@@ -22,6 +22,10 @@ export class Register extends Component {
     });
   }
 
+  formSubmit = () => {
+
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -95,7 +99,7 @@ export class Register extends Component {
             </View>
           </View>
           <Pressable
-            onPress={() => Alert.alert('Create Account Button pressed')}
+            onPress={this.formSubmit}
             style={({ pressed }) => [
               {
                 backgroundColor: pressed
