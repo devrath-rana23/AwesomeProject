@@ -32,6 +32,17 @@ export class Register extends Component {
   }
 
   onFormSubmit = () => {
+
+    let valid_name = false;
+    let valid_email = false;
+    let valid_contact_number = false;
+    let valid_password = false;
+    let valid_confirm_password = false;
+    if (valid_name && valid_email && valid_contact_number && valid_password && valid_confirm_password) {
+      this.setState((state, props) => {
+        return { submitted: !state.submitted };
+      });
+    }
     if (!this.name) {
       ToastAndroid.showWithGravityAndOffset('Name field is required.',
         ToastAndroid.LONG,
@@ -46,11 +57,80 @@ export class Register extends Component {
           100, 2500
         );
       } else {
-        this.setState((state, props) => {
-          return { submitted: !state.submitted };
-        });
+        valid_name = true;
       }
     }
+    if (!this.email) {
+      ToastAndroid.showWithGravityAndOffset('Email field is required.',
+        ToastAndroid.LONG,
+        ToastAndroid.TOP,
+        100, 2500
+      );
+    } else {
+      const email_re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      if (email_re.test(String(this.email).toLowerCase())) {
+        valid_email = true;
+      } else {
+        ToastAndroid.showWithGravityAndOffset('Email field is invalid.',
+          ToastAndroid.LONG,
+          ToastAndroid.TOP,
+          100, 2500
+        );
+      }
+    }
+    if (!this.contact_number) {
+      ToastAndroid.showWithGravityAndOffset('Contact number field is required.',
+        ToastAndroid.LONG,
+        ToastAndroid.TOP,
+        100, 2500
+      );
+    } else {
+      const phoneno_re = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+      if (this.contact_number.value.match(phoneno_re)) {
+        valid_contact_number = true;
+      } else {
+        ToastAndroid.showWithGravityAndOffset('Contact number field is invalid.',
+          ToastAndroid.LONG,
+          ToastAndroid.TOP,
+          100, 2500
+        );
+      }
+    }
+    if (!this.password) {
+      ToastAndroid.showWithGravityAndOffset('Password field is required.',
+        ToastAndroid.LONG,
+        ToastAndroid.TOP,
+        100, 2500
+      );
+    } else {
+      const password_regex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+      if (this.password.value.match(password_regex)) {
+        valid_password = true;
+      } else {
+        ToastAndroid.showWithGravityAndOffset('Password field is invalid.',
+          ToastAndroid.LONG,
+          ToastAndroid.TOP,
+          100, 2500);
+      }
+    }
+    if (!this.confirm_password) {
+      ToastAndroid.showWithGravityAndOffset('Confirm Password field is required.',
+        ToastAndroid.LONG,
+        ToastAndroid.TOP,
+        100, 2500
+      );
+    } else {
+      if (this.password != this.confirm_password) {
+        ToastAndroid.showWithGravityAndOffset('Confirm Password field is invalid.',
+          ToastAndroid.LONG,
+          ToastAndroid.TOP,
+          100, 2500
+        );
+      } else {
+        valid_confirm_password = true;
+      }
+    }
+
   }
 
   render() {
