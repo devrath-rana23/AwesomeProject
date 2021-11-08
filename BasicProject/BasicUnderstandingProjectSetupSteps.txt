@@ -90,3 +90,14 @@ npm install --save react-native
 if fonrawesome icon not showing
 npx react-native link
 npx react-native run-android
+
+Concepts=>
+-async await
+-ES6, ES10
+-Arrow functions
+-let var const
+-promises
+-async await
+-Mobx
+-MDN - JS
+-React native facebook
