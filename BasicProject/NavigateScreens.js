@@ -108,16 +108,17 @@ function RegisterScreen({ navigation }) {
 
 function ForgetpasswordScreen({ navigation }) {
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#ffffff', }}>
-            <Forgetpassword />
-            <View style={{ marginVertical: 20, }}></View>
-            <TouchableOpacity
-                style={{ height: 370 }}
-                onPress={() => navigation.navigate('Login')}
-            >
-                <Text >Back to login</Text>
-            </TouchableOpacity >
-        </View>
+        <SafeAreaView style={styles.container}>
+            <ScrollView >
+                <Forgetpassword />
+                <Pressable
+                    onPress={() => navigation.navigate('Login')}
+                    style={styles.redirect_button}
+                >
+                    <Text style={styles.redirect_button_text}>Back to login</Text>
+                </Pressable>
+            </ScrollView>
+        </SafeAreaView>
     );
 }
 

@@ -1,44 +1,41 @@
-import React, { Component, useState } from 'react';
-import { Text, StyleSheet, View, TextInput, Image, Alert, SafeAreaView, TouchableHighlight, TouchableOpacity } from 'react-native';
+import React, { Component } from 'react';
+import { Text, StyleSheet, View, TextInput, Image, Alert, Pressable } from 'react-native';
 import { LOGO } from './src/image/index.js';
-import { Button } from 'react-native-elements';
-import LinearGradient from 'react-native-linear-gradient';
-import { renderNode } from 'react-native-elements/dist/helpers';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-
-
-const Separator = () => (
-  <View style={styles.separator} />
-);
 export class Forgetpassword extends Component {
   render() {
     return (
-      <SafeAreaView style={styles.container}>
-        <View >
+      <View style={styles.container}>
+        <View style={styles.image_container}>
           <Image
             style={styles.logo}
             source={LOGO}
           />
-          <Text style={{ fontSize: 40, fontWeight: 'bold', fontFamily: "serif", color: '#000000', marginLeft: 17 }}>Forgetpassword</Text>
-          <View>
+        </View>
+        <View style={styles.heading}>
+          <Text style={styles.heading_text}>Forgetpassword</Text>
+        </View>
+        <View style={styles.form_container}>
+          <View style={styles.form_fields_container}>
             <Text style={styles.label}>Email</Text>
             <TextInput
               style={styles.inputBox}
               placeholder="Your email id" />
-            <Separator />
-            <TouchableOpacity style={{ backgroundColor: '#1b3c42', marginLeft: 20, marginRight: 20, height: 40, borderRadius: 55 }}
-              onPress={() => {
-                Alert.alert('Forgetpassword Button pressed');
-              }}
-            >
-              <Text style={{ color: "#ffffff", textAlign: 'center', fontWeight: "bold", fontSize: 17, paddingTop: 6 }}>
-                Forgetpassword
-              </Text>
-            </TouchableOpacity >
           </View>
+          <Pressable
+            onPress={() => Alert.alert('Forgetpassword Button pressed')}
+            style={({ pressed }) => [
+              {
+                backgroundColor: pressed
+                  ? '#ddd'
+                  : '#1b3c42'
+              },
+              styles.button
+            ]}
+          >
+            <Text style={styles.button_text}>Forgetpassword</Text>
+          </Pressable>
         </View>
-      </SafeAreaView>
-
+      </View>
     );
   }
 }
@@ -46,27 +43,49 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
-
+  },
+  image_container: {
+    flex: 1,
   },
   logo: {
     width: 412,
     height: 210,
   },
-  label: {
-    fontSize: 20,
+  heading: {
+    margin: 20,
+  },
+  heading_text: {
+    fontFamily: 'serif',
+    color: '#000',
+    fontSize: 40,
     fontWeight: 'bold',
-    color: '#000000',
-    marginLeft: 17,
+  },
+  form_container: {
+    flex: 1,
+    borderWidth: 20,
+    borderColor: '#fff',
+    alignItems: 'stretch',
+  },
+  form_fields_container: {
+    marginBottom: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: '#000',
+  },
+  label: {
+    fontSize: 19,
+    fontWeight: 'bold',
+    color: '#000',
   },
   inputBox: {
-    paddingLeft: 20,
+    paddingBottom: 1,
   },
-  separator: {
-    marginVertical: 8,
-    borderBottomColor: '#000000',
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    marginLeft: 20,
-    marginRight: 20,
-
+  button: {
+    padding: 12,
+    borderRadius: 50,
+  },
+  button_text: {
+    color: '#fff',
+    fontSize: 20,
+    textAlign: 'center',
   },
 });
