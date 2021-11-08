@@ -38,11 +38,7 @@ export class Register extends Component {
     let valid_contact_number = false;
     let valid_password = false;
     let valid_confirm_password = false;
-    if (valid_name && valid_email && valid_contact_number && valid_password && valid_confirm_password) {
-      this.setState((state, props) => {
-        return { submitted: !state.submitted };
-      });
-    }
+
     if (!this.name) {
       ToastAndroid.showWithGravityAndOffset('Name field is required.',
         ToastAndroid.LONG,
@@ -129,6 +125,12 @@ export class Register extends Component {
       } else {
         valid_confirm_password = true;
       }
+    }
+
+    if (valid_name && valid_email && valid_contact_number && valid_password && valid_confirm_password) {
+      this.setState((state, props) => {
+        return { submitted: !state.submitted };
+      });
     }
 
   }
@@ -246,7 +248,7 @@ export class Register extends Component {
             <Text style={styles.button_text}>Create Account</Text>
           </Pressable>
           {
-            this.submitted ? <Text>You are registered successfully as '{this.name}'</Text> : null
+            this.submitted ? <Text>You are registered successfully as '{this.state.name}'</Text> : null
           }
         </View>
       </View>
