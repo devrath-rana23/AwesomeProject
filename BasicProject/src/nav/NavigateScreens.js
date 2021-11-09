@@ -7,6 +7,7 @@ import { ForgetpasswordScreen } from '../screens/ForgetpasswordScreen';
 import HomeScreen from '../screens/HomeScreen.js';
 import LoginScreen from '../screens/LoginScreen.js';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 const Stack = createNativeStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
@@ -83,10 +84,30 @@ export class NavigateScreens extends Component {
         return (
             <NavigationContainer>
                 <Tab.Navigator
-                    screenOptions={{
-                        headerShown: false
-                    }}
-                    initialRouteName="Home">
+                    screenOptions={({ route }) => ({
+                        tabBarIcon: ({ focused, size, color }) => {
+                            let iconName;
+                            if (route.name === 'Register') {
+                                iconName = 'autoprefixer';
+                                size = focused ? 25 : 20;
+                            } else if (route.name === 'Login') {
+                                iconName = 'btc';
+                                size = focused ? 25 : 20;
+                            }
+                            return (
+                                <FontAwesome5
+                                    name={iconName}
+                                    size={size}
+                                    color={color}
+                                />
+                            );
+                        }
+                    })}
+                    activeColor='#f0edf6'
+                    inactiveColor='#3e2465'
+                    barStyle={{ backgroundColor: '#694fad', }}
+                    initialRouteName="Home"
+                >
                     <Tab.Screen
                         name="Home"
                         component={HomeScreen}
