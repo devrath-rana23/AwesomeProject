@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, Image, StyleSheet, SafeAreaView, Pressable } from 'react-native';
-import { LOGO} from '../assets/image/index';
+import { LOGO } from '../assets/image/index';
 
 const styles = StyleSheet.create({
     container: {

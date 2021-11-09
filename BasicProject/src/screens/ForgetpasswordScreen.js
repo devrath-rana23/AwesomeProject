@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, View, TextInput, Image, ToastAndroid, Pressable, ScrollView } from 'react-native';
 import { LOGO } from '../assets/image/index';
-export class Forgetpassword extends Component {
+
+export class ForgetpasswordScreen extends Component {
 
   constructor(props) {
     super(props);

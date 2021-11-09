@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { ScrollView, Text, StyleSheet, SafeAreaView, Pressable } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Register } from '../screens/Register';
-import { Forgetpassword } from '../screens/Forgetpassword';
+import { RegisterScreen } from '../screens/RegisterScreen';
+import { ForgetpasswordScreen } from '../screens/ForgetpasswordScreen';
 import HomeScreen from '../screens/HomeScreen.js';
-import LoginScreen from '../screens/Login.js';
+import LoginScreen from '../screens/LoginScreen.js';
 
 const Stack = createNativeStackNavigator();
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -48,11 +49,11 @@ const styles = StyleSheet.create({
 
 });
 
-const RegisterScreen = ({ navigation }) => {
+const Register = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView >
-                <Register />
+                <RegisterScreen />
                 <Pressable
                     onPress={() => navigation.navigate('Login')}
                     style={styles.redirect_button}
@@ -65,18 +66,15 @@ const RegisterScreen = ({ navigation }) => {
     );
 }
 
-const ForgetpasswordScreen = ({ navigation }) => {
+const Forgetpassword = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
-            <Forgetpassword
+            <ForgetpasswordScreen
                 onNavigation={navigation}
             />
         </SafeAreaView>
     );
 }
-
-
-
 export class NavigateScreens extends Component {
 
     render() {
@@ -93,7 +91,7 @@ export class NavigateScreens extends Component {
                     />
                     <Stack.Screen
                         name="Register"
-                        component={RegisterScreen}
+                        component={Register}
                     />
                     <Stack.Screen
                         name="Login"
@@ -101,7 +99,7 @@ export class NavigateScreens extends Component {
                     />
                     <Stack.Screen
                         name="Forgetpassword"
-                        component={ForgetpasswordScreen}
+                        component={Forgetpassword}
                     />
                 </Stack.Navigator>
             </NavigationContainer>

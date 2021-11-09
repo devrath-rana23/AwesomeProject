@@ -3,7 +3,7 @@ import { Text, StyleSheet, View, TextInput, Image, Pressable, ToastAndroid } fro
 import { LOGO } from '../assets/image/index';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-export class Register extends Component {
+export class RegisterScreen extends Component {
 
   constructor(props) {
     super(props);
