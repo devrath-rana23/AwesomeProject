@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View, TextInput, Image, ToastAndroid, Pressable } from 'react-native';
+import { Text, StyleSheet, View, TextInput, Image, ToastAndroid, Pressable, ScrollView } from 'react-native';
 import { LOGO } from './src/image/index.js';
 export class Forgetpassword extends Component {
 
@@ -36,47 +36,56 @@ export class Forgetpassword extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <View style={styles.image_container}>
-          <Image
-            style={styles.logo}
-            source={LOGO}
-          />
-        </View>
-        <View style={styles.heading}>
-          <Text style={styles.heading_text}>Forgetpassword</Text>
-        </View>
-        <View style={styles.form_container}>
-          <View style={styles.form_fields_container}>
-            <Text style={styles.label}>Email</Text>
-            <TextInput
-              keyboardType='email-address'
-              onChangeText={(value) => {
-                this.setState((state, props) => {
-                  return { email: value };
-                });
-              }}
-              style={styles.inputBox}
-              placeholder="Your email id" />
+      <ScrollView >
+        <View style={styles.container}>
+          <View style={styles.image_container}>
+            <Image
+              style={styles.logo}
+              source={LOGO}
+            />
           </View>
-          <Pressable
-            onPress={this.onFormSubmit}
-            style={({ pressed }) => [
-              {
-                backgroundColor: pressed
-                  ? '#ddd'
-                  : '#1b3c42'
-              },
-              styles.button
-            ]}
-          >
-            <Text style={styles.button_text}>Submit</Text>
-          </Pressable>
-          {
-            this.state.submitted ? <Text>Forget password successfully '{this.state.email}'</Text> : null
-          }
+          <View style={styles.heading}>
+            <Text style={styles.heading_text}>Forgetpassword</Text>
+          </View>
+          <View style={styles.form_container}>
+            <View style={styles.form_fields_container}>
+              <Text style={styles.label}>Email</Text>
+              <TextInput
+                keyboardType='email-address'
+                onChangeText={(value) => {
+                  this.setState((state, props) => {
+                    return { email: value };
+                  });
+                }}
+                style={styles.inputBox}
+                placeholder="Your email id" />
+            </View>
+            <Pressable
+              onPress={this.onFormSubmit}
+              style={({ pressed }) => [
+                {
+                  backgroundColor: pressed
+                    ? '#ddd'
+                    : '#1b3c42'
+                },
+                styles.button
+              ]}
+            >
+              <Text style={styles.button_text}>Submit</Text>
+            </Pressable>
+            {
+              this.state.submitted ? <Text>Forget password successfully '{this.state.email}'</Text> : null
+            }
+          </View>
         </View>
-      </View>
+        <Pressable
+          onPress={() => this.props.onNavigation.navigate('Login')}
+          style={styles.redirect_button}
+        >
+          <Text style={styles.redirect_button_text}>Back to login</Text>
+        </Pressable>
+      </ScrollView >
+
     );
   }
 }
@@ -128,5 +137,14 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 20,
     textAlign: 'center',
+  },
+  redirect_button: {
+    marginBottom: 20,
+    flex: 1,
+    alignItems: 'center',
+  },
+  redirect_button_text: {
+    fontSize: 16,
+    color: '#000',
   },
 });
