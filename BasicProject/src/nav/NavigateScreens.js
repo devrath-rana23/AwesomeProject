@@ -6,8 +6,10 @@ import { RegisterScreen } from '../screens/RegisterScreen';
 import { ForgetpasswordScreen } from '../screens/ForgetpasswordScreen';
 import HomeScreen from '../screens/HomeScreen.js';
 import LoginScreen from '../screens/LoginScreen.js';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 
 const Stack = createNativeStackNavigator();
+const Tab = createMaterialBottomTabNavigator();
 
 const styles = StyleSheet.create({
     container: {
@@ -80,28 +82,28 @@ export class NavigateScreens extends Component {
     render() {
         return (
             <NavigationContainer>
-                <Stack.Navigator
+                <Tab.Navigator
                     screenOptions={{
                         headerShown: false
                     }}
                     initialRouteName="Home">
-                    <Stack.Screen
+                    <Tab.Screen
                         name="Home"
                         component={HomeScreen}
                     />
-                    <Stack.Screen
+                    <Tab.Screen
                         name="Register"
                         component={Register}
                     />
-                    <Stack.Screen
+                    <Tab.Screen
                         name="Login"
                         component={LoginScreen}
                     />
-                    <Stack.Screen
+                    <Tab.Screen
                         name="Forgetpassword"
                         component={Forgetpassword}
                     />
-                </Stack.Navigator>
+                </Tab.Navigator>
             </NavigationContainer>
         );
     }
