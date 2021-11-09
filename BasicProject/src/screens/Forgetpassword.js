@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, View, TextInput, Image, ToastAndroid, Pressable, ScrollView } from 'react-native';
-import { LOGO } from './src/image/index.js';
+import { LOGO } from '../assets/image/index';
 export class Forgetpassword extends Component {
 
   constructor(props) {

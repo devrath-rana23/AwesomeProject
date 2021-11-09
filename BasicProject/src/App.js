@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from 'react';
-import { NavigateScreens } from './NavigateScreens.js';
+import { NavigateScreens } from './nav/NavigateScreens';
 
 class Main extends Component {
   render() {

@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { ScrollView, Text, StyleSheet, SafeAreaView, Pressable } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Register } from './Register.js';
-import { Forgetpassword } from './Forgetpassword';
-import HomeScreen from './HomeScreen.js';
-import LoginScreen from './Login.js';
+import { Register } from '../screens/Register';
+import { Forgetpassword } from '../screens/Forgetpassword';
+import HomeScreen from '../screens/HomeScreen.js';
+import LoginScreen from '../screens/Login.js';
 
 const Stack = createNativeStackNavigator();
 const styles = StyleSheet.create({

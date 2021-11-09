@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, View, TextInput, Image, Pressable, ToastAndroid } from 'react-native';
-import { LOGO } from './src/image/index.js';
+import { LOGO } from '../assets/image/index';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export class Register extends Component {

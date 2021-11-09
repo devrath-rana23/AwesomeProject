@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { TextInput, ScrollView, Text, View, Image, StyleSheet, SafeAreaView, Pressable, ToastAndroid } from 'react-native';
-import { LOGO, GMAIL_LOGO, FACEBOOK_LOGO } from './src/image/index.js';
+import { LOGO, GMAIL_LOGO, FACEBOOK_LOGO } from '../assets/image/index';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const LoginScreen = ({ navigation }) => {
